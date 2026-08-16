@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guardião do Parque</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div id="formArea">
+
+        <h1>Guardião do Parque</h1>
+        <br/>
+        <br/>
+        <div class="form-group">
+            <label for="nameInput">Seu nome:</label>
+
+            <input 
+                type="text" 
+                id="nameInput"
+                placeholder="Digite seu nome..."
+                maxlength="30"
+            >
+            <small id="nameError"></small>
+        </div>
+
+        <div class="camera-area">
+
+            <video id="video" autoplay playsinline></video>
+
+            <img id="photoPreview" alt="Foto capturada">
+
+            <canvas id="canvas" style="display: none;"></canvas>
+
+        </div>
+
+        <button id="btnPhoto" class="btn-secondary">
+            Tirar Foto
+        </button>
+
+        <button id="btnGenerate" class="btn-primary" disabled>
+            Gerar Meu Diploma
+        </button>
+
+    </div>
+
+
+    <div id="diplomaArea" class="hidden">
+
+        <h2>Seu Diploma:</h2>
+
+        <canvas id="diplomaCanvas"></canvas>
+
+        <button id="btnDownload" class="btn-download">
+            Salvar Diploma
+        </button>
+
+        <button id="btnAnother" class="btn-outline">
+            Fazer Outro
+        </button>
+
+    </div>
+
+    <script src="assets/js/camera.js"></script>
+    <script src="assets/js/diploma.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        startCamera();
+    </script>
+
+</body>
+
+</html>
