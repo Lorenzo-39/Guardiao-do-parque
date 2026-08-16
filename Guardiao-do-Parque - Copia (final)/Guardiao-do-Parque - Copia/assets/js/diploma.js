@@ -125,24 +125,6 @@ function drawDiploma(name) {
             400,
             550
         );
-
-        // Carrega a logo
-        const logo = new Image();
-
-        logo.onload = function () {
-
-            ctx.drawImage(
-                logo,
-                580,
-                440,
-                190,
-                160
-            );
-
-        };
-
-        logo.src = 'assets/img/logo.png';
-
     };
 
     photo.src = photoData;
