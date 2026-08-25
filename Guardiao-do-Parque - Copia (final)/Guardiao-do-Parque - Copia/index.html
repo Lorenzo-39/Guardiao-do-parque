@@ -15,8 +15,7 @@
     <div id="formArea">
 
         <h1>Guardião do Parque</h1>
-        <br/>
-        <br/>
+       
         <div class="form-group">
             <label for="nameInput">Seu nome:</label>
 
@@ -24,21 +23,36 @@
                 type="text" 
                 id="nameInput"
                 placeholder="Digite seu nome..."
-                maxlength="30"
+                maxlength="45"
             >
             <small id="nameError"></small>
         </div>
+
+        <div class="form-group">
+    <label for="scoreInput">Pontuação do Quiz:</label>
+
+    <input
+        type="number"
+        id="scoreInput"
+        min="0"
+        max="5"
+        step="1"
+        placeholder="Digite sua pontuação (0 a 5)"
+    >
+        <small id="scoreError"></small>
+    </div>
 
         <div class="camera-area">
 
             <video id="video" autoplay playsinline></video>
 
-            <img id="photoPreview" alt="Foto capturada">
+            <img id="photoPreview" alt="">
 
             <canvas id="canvas" style="display: none;"></canvas>
 
         </div>
 
+        <div class="form-buttons">
         <button id="btnPhoto" class="btn-secondary">
             Tirar Foto
         </button>
@@ -46,6 +60,7 @@
         <button id="btnGenerate" class="btn-primary" disabled>
             Gerar Meu Diploma
         </button>
+        </div>
 
     </div>
 
@@ -56,6 +71,7 @@
 
         <canvas id="diplomaCanvas"></canvas>
 
+    <div class="diploma-buttons">
         <button id="btnDownload" class="btn-download">
             Salvar Diploma
         </button>
@@ -63,6 +79,7 @@
         <button id="btnAnother" class="btn-outline">
             Fazer Outro
         </button>
+    </div>
 
     </div>
 
