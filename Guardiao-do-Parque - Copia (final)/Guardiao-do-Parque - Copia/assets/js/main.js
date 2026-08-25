@@ -10,15 +10,24 @@ btnPhoto.addEventListener('click', function () {
 
 const nameInput = document.getElementById('nameInput');
 const btnGenerate = document.getElementById('btnGenerate');
+const scoreInput = document.getElementById('scoreInput');
 
 btnGenerate.addEventListener('click', function () {
 
     const name = nameInput.value;
+    const score = Number(scoreInput.value);
 
-    drawDiploma(name);
+    drawDiploma(name, score);
 
     document.getElementById('formArea').classList.add('hidden');
     document.getElementById('diplomaArea').classList.remove('hidden');
+    confetti({
+    particleCount: 150,
+    spread: 100,
+    origin: {
+        y: 0.6
+    }
+});
 
 });
 
@@ -27,7 +36,10 @@ function checkForm() {
     const name = nameInput.value.trim();
     const nameError = document.getElementById('nameError');
 
-    // Aceita letras, espaços e acentos
+    const score = Number(scoreInput.value);
+    const scoreError = document.getElementById('scoreError');
+
+    // Validação do nome
     const onlyLetters = /^[A-Za-zÀ-ÿ\s]+$/;
 
     if (name === '') {
@@ -49,13 +61,29 @@ function checkForm() {
     }
 
     nameError.textContent = '';
-    
+
+    // Validação da pontuação
+    if (
+        scoreInput.value === '' ||
+        !Number.isInteger(score) ||
+        score < 0 ||
+        score > 5
+    ) {
+        scoreError.textContent = 'Digite uma pontuação de 0 a 5.';
+        btnGenerate.disabled = true;
+        return;
+    }
+
+    scoreError.textContent = '';
+
+    // Verifica se existe foto
     const photoTaken = photoData !== null;
 
     btnGenerate.disabled = !photoTaken;
 }
 
 nameInput.addEventListener('input', checkForm);
+scoreInput.addEventListener('input', checkForm);
 
 const btnDownload = document.getElementById('btnDownload');
 
@@ -77,6 +105,9 @@ btnAnother.addEventListener('click', function () {
 
     // Limpa o nome
     nameInput.value = '';
+
+    // Limpa a pontuação
+    scoreInput.value = '';
 
     // Limpa a foto
     photoData = null;
